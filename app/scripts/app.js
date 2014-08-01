@@ -13,11 +13,17 @@ loginApp.config(['$locationProvider', '$routeProvider',
     $routeProvider.when('/', {
         templateUrl: 'templates/login.html',
         controller: 'AdminUserCtrl',
+        data: {
+          authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+        }
         // access: { requiredLogin: false }
     })
     .when('/admin', {
         templateUrl: 'templates/admin.html',
         controller: 'AdminCtrl',
+        data: {
+          authorizedRoles: USER_ROLES.admin
+        }
         // access: { requiredLogin: true }
     })
 
