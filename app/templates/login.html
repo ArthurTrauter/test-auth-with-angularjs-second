@@ -1,0 +1,24 @@
+<form name="loginForm" ng-controller="LoginController"
+      ng-submit="login(credentials)" novalidate>
+
+  <label for="username">Username:</label>
+  <input type="text" id="username"
+         ng-model="credentials.username">
+
+  <label for="password">Password:</label>
+  <input type="password" id="password"
+         ng-model="credentials.password">
+
+  <button type="submit">Login</button>
+
+</form>
+
+<div ng-if="currentUser">Wilkommen, {{ currentUser.name }}</div>
+
+<div ng-if="isAuthorized(userRoles.admin)">Du bist ein admin</div>
+
+<div ng-switch on="currentUser.role">
+  <div ng-switch-when="userRoles.admin">Du bist ein admin</div>
+  <div ng-switch-when="userRoles.editor">Du bist ein editor</div>
+  <div ng-switch-default>Du bist weder admin noch editor</div>
+</div>
